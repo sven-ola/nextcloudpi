@@ -24,10 +24,12 @@ export DEBIAN_FRONTEND=noninteractive
 
 install()
 {
-    # Setup apt repository for php 8
-    if [ ! -f /etc/apt/sources.list.d/php.list ] || [ ! -f /etc/apt/trusted.gpg.d/php.gpg ];then
-        wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-        echo "deb https://packages.sury.org/php/ ${RELEASE%-security} main" > /etc/apt/sources.list.d/php.list
+    if false;then
+        # Setup apt repository for php 8
+        if [ ! -f /etc/apt/sources.list.d/php.list ] || [ ! -f /etc/apt/trusted.gpg.d/php.gpg ];then
+            wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
+            echo "deb https://packages.sury.org/php/ ${RELEASE%-security} main" > /etc/apt/sources.list.d/php.list
+        fi
     fi
     apt-get update
     $APTINSTALL apt-utils cron curl
